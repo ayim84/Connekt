@@ -9,9 +9,22 @@ function sortArray(array)
             return -1;
         }
         
-        else(a.topLeftY < b.topLeftY)
+        else if(a.topLeftY < b.topLeftY)
         {
             return 1;
+        }
+
+        else
+        {
+            if(a.topLeftX > b.topLeftX)
+            {
+                return 1;
+            }
+            
+            else if(a.topLeftX < b.topLeftX)
+            {
+                return -1;
+            }
         }
     });
 
@@ -25,9 +38,22 @@ function sortArray(array)
             return 1;
         }
         
-        else(a.topLeftX < b.topLeftX)
+        else if(a.topLeftX < b.topLeftX)
         {
             return -1;
+        }
+
+        else
+        {
+            if(a.topLeftY > b.topLeftY)
+            {
+                return -1;
+            }
+            
+            else if(a.topLeftY < b.topLeftY)
+            {
+                return 1;
+            }
         }
     });
 
@@ -54,9 +80,35 @@ function sortArray(array)
             return -1;
         }
         
-        else(a.size < b.size)
+        else if(a.size < b.size)
         {
             return 1;
+        }
+
+        else
+        {
+            if(a.topLeftY > b.topLeftY)
+            {
+                return -1;
+            }
+            
+            else if(a.topLeftY < b.topLeftY)
+            {
+                return 1;
+            }
+
+            else
+            {
+                if(a.topLeftX > b.topLeftX)
+                {
+                    return 1;
+                }
+                
+                else if(a.topLeftX < b.topLeftX)
+                {
+                    return -1;
+                }
+            }   
         }
     });
 
