@@ -9,7 +9,7 @@ function sortArray(array)
             return -1;
         }
         
-        if(a.topLeftY < b.topLeftY)
+        else(a.topLeftY < b.topLeftY)
         {
             return 1;
         }
@@ -25,7 +25,7 @@ function sortArray(array)
             return 1;
         }
         
-        if(a.topLeftX < b.topLeftX)
+        else(a.topLeftX < b.topLeftX)
         {
             return -1;
         }
@@ -54,7 +54,7 @@ function sortArray(array)
             return -1;
         }
         
-        if(a.size < b.size)
+        else(a.size < b.size)
         {
             return 1;
         }
