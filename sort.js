@@ -1,27 +1,29 @@
-var objectArray = 
-[
-    {
-        id: 1,
-        topLeftX: 830,
-        topLeftY: 123,
-        height: 50,
-        width: 40
-    },
-    {
-        id: 2,
-        topLeftX: 98,
-        topLeftY: 3,
-        height: 78,
-        width: 12
-    },
-    {
-        id: 3,
-        topLeftX: 56,
-        topLeftY: 28,
-        height: 83,
-        width: 75
-    }
-];
+var objectArray = [];
+
+// var objectArray = 
+// [
+//     {
+//         id: 1,
+//         topLeftX: 830,
+//         topLeftY: 123,
+//         height: 50,
+//         width: 40
+//     },
+//     {
+//         id: 2,
+//         topLeftX: 98,
+//         topLeftY: 3,
+//         height: 78,
+//         width: 12
+//     },
+//     {
+//         id: 3,
+//         topLeftX: 56,
+//         topLeftY: 28,
+//         height: 83,
+//         width: 75
+//     }
+// ];
 
 function sortArray(array)
 {
@@ -82,8 +84,6 @@ function sortArray(array)
 
     console.log("Big to Small", sizeArray);
 }
-
-sortArray(objectArray);
 
 /*******************************************************
 Alternate method with separate functions for each sort
@@ -155,3 +155,46 @@ topToBottomSort(objectArray);
 leftToRightSort(objectArray);
 sizeSort(objectArray);
 *******************************************************/
+
+$("#add").on("click", function(event)
+{
+    event.preventDefault();
+
+    var idFound = false;
+    var newObject = 
+    {
+        id: parseInt($("#id").val()),
+        topLeftX: parseInt($("#topLeftX").val()),
+        topLeftY: parseInt($("#topLeftY").val()),
+        height: parseInt($("#height").val()),
+        width: parseInt($("#width").val())
+    };
+
+    for(var i = 0; i < objectArray.length; i++)
+    {
+        if($("#id").val() == objectArray[i].id)
+        {
+            idFound = true;
+        }
+    }
+
+    if(idFound == true)
+    {
+        alert("ID already exists.  Please try different ID.");
+    }
+    else
+    {
+        objectArray.push(newObject);
+        $("form :input").val("");
+        sortArray(objectArray);
+
+        var newObjectHTML = $("<ul>");
+        newObjectHTML.append("<li>ID: " + newObject.id + "</li>");
+        newObjectHTML.append("<li>Top Left X: " + newObject.topLeftX + "</li>");
+        newObjectHTML.append("<li>Top Left Y: " + newObject.topLeftY + "</li>");
+        newObjectHTML.append("<li>Height: " + newObject.height + "</li>");
+        newObjectHTML.append("<li>Width: " + newObject.width + "</li>");
+
+        $("#objectArray").append(newObjectHTML);
+    }
+})
